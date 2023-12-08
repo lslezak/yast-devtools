@@ -62,14 +62,13 @@ jobs:
           if [ -n "$PR" ]; then
             echo "Found pull request $PR (${{ github.server_url }}/${{ github.repository }}/pull/$PR)"
             JOB_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            MSG=":heavy_check_mark: Autosubmission job [#${{ github.run_id }}]($JOB_URL) successfully finished"
+            MSG=":white_check_mark: Autosubmission job [#${{ github.run_id }}]($JOB_URL) successfully finished"
 
-            echo "'$SUBMIT'"
-            if [ -n "$SUBMIT"]; then
+            if echo "$SUBMIT" | grep -q "^[0-9]\+$"; then
               SR_URL="https://build.opensuse.org/request/show/$SUBMIT"
               echo "Created submit request $SUBMIT ($SR_URL)"
               MSG="$MSG
-          :heavy_check_mark: Created submit request [#$SUBMIT]($SR_URL)"
+          :white_check_mark: Created submit request [#$SUBMIT]($SR_URL)"
             fi
 
             gh issue comment $PR --body "$MSG"
