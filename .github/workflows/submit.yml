@@ -64,10 +64,12 @@ jobs:
             JOB_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             MSG=":heavy_check_mark: Autosubmission job [#${{ github.run_id }}]($JOB_URL) successfully finished"
 
+            echo "'$SUBMIT'"
             if [ -n "$SUBMIT"]; then
               SR_URL="https://build.opensuse.org/request/show/$SUBMIT"
               echo "Created submit request $SUBMIT ($SR_URL)"
-              MSG="$MSG\n:heavy_check_mark: Created submit request [#$SUBMIT]($SR_URL)"
+              MSG="$MSG
+          :heavy_check_mark: Created submit request [#$SUBMIT]($SR_URL)"
             fi
 
             gh issue comment $PR --body "$MSG"
