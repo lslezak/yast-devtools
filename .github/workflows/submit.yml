@@ -11,10 +11,6 @@ on:
     # FIXME:
     branches: [ master, autosubmission ]
 
-permissions:
-  issues: write
-  pull-requests: read
-
 jobs:
   submit:
     # do not run in forks
@@ -50,7 +46,7 @@ jobs:
         timeout-minutes: 20
         run: |
           OUTFILE=$(mktemp -p '' rake_osc_sr_XXXXXXX)
-          rake osc:sr | tee $OUTFILE
+          # rake osc:sr | tee $OUTFILE
           SR=$(grep "^created request id [0-9]+" $OUTFILE | sed -e 's/created request id //')
           # pass the SR number
           echo "submit=$SR" >> $GITHUB_OUTPUT
