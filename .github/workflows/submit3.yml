@@ -1,0 +1,19 @@
+# See https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+
+name: Autosubmission3
+
+on:
+  # when committing to master
+  push:
+    # FIXME: master only
+    branches: [ master, autosubmission ]
+
+  # allow running manually
+  workflow_dispatch:
+
+jobs:
+  autosubmit:
+    uses: lslezak/actions/.github/workflows/submit.yml@main
+    secrets:
+      obs_user:     ${{ secrets.OBS_USER }}
+      obs_password: ${{ secrets.OBS_PASSWORD }}
