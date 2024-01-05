@@ -1,0 +1,29 @@
+# See https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+
+# TODO: share this action with all packages
+# https://docs.github.com/en/actions/using-workflows/reusing-workflows
+
+name: Autosubmission
+
+on:
+  # when committing to master
+  push:
+    # FIXME:
+    branches: [ master, autosubmission ]
+
+  # allow running manually
+  workflow_dispatch:
+
+jobs:
+  submit:
+    # do not run in forks
+    # FIXME: if: github.repository_owner == 'yast'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Autosubmission
+        uses: lslezak/actions@main

@@ -14,7 +14,7 @@ on:
 jobs:
   submit:
     # do not run in forks
-    # FIXME: if: github.repository_owner == 'yast'
+    if: github.repository_owner == 'yast'
 
     runs-on: ubuntu-latest
 
