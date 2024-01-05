@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Autosubmission
-        uses: lslezak/actions@main
+        uses: lslezak/actions/submit@main
         with:
           obs_user:     ${{ secrets.OBS_USER }}
           obs_password: ${{ secrets.OBS_PASSWORD }}
