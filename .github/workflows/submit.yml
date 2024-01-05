@@ -11,6 +11,9 @@ on:
     # FIXME:
     branches: [ master, autosubmission ]
 
+  # allow running manually
+  workflow_dispatch:
+
 jobs:
   submit:
     # do not run in forks
