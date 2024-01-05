@@ -1,14 +1,11 @@
 # See https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 
-# TODO: share this action with all packages
-# https://docs.github.com/en/actions/using-workflows/reusing-workflows
-
 name: Autosubmission
 
 on:
   # when committing to master
   push:
-    # FIXME:
+    # FIXME: master only
     branches: [ master, autosubmission ]
 
   # allow running manually
@@ -21,12 +18,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    # the default timeout is 6 hours, do not wait for that long if osc gets stucked
+    timeout-minutes: 60
+
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
 
       - name: Autosubmission
         uses: lslezak/actions@main
-        env:
-          OBS_USER:     ${{ secrets.OBS_USER }}
-          OBS_PASSWORD: ${{ secrets.OBS_PASSWORD }}
+        with:
+          obs_user:     ${{ secrets.OBS_USER }}
+          obs_password: ${{ secrets.OBS_PASSWORD }}
