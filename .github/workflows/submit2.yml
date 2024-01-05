@@ -22,9 +22,6 @@ jobs:
     timeout-minutes: 60
 
     steps:
-      - name: Git Checkout
-        uses: actions/checkout@v4
-
       - name: Autosubmission
         uses: lslezak/actions@main
         with:
