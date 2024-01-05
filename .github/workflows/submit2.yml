@@ -27,3 +27,6 @@ jobs:
 
       - name: Autosubmission
         uses: lslezak/actions@main
+        env:
+          OBS_USER:     ${{ secrets.OBS_USER }}
+          OBS_PASSWORD: ${{ secrets.OBS_PASSWORD }}
