@@ -1,6 +1,6 @@
 # See https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 
-name: OBS Submission
+name: OBS
 
 on:
   # when committing to master
@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: Autosubmission
+      - name: Submit the package
         uses: lslezak/actions/submit@main
         with:
           obs_user:     ${{ secrets.OBS_USER }}
