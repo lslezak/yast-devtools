@@ -1,6 +1,6 @@
 # See https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 
-name: Autosubmission
+name: OBS Submission
 
 on:
   # when committing to master
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # the default timeout is 6 hours, do not wait for that long if osc gets stucked
-    timeout-minutes: 60
+    timeout-minutes: 30
 
     steps:
       - name: Autosubmission
@@ -27,3 +27,4 @@ jobs:
         with:
           obs_user:     ${{ secrets.OBS_USER }}
           obs_password: ${{ secrets.OBS_PASSWORD }}
+          task:         osc:config
